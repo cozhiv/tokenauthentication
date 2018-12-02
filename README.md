@@ -1,16 +1,15 @@
 # flask-jwt-auth
 
-JWT Authorization in Flask
+JWT Authorization in Flask with SQLAlchemy
 
-Full tutorial here:
-https://codeburst.io/jwt-authorization-in-flask-c63c1acf4eeb
 ## How to run
 
 ``` bash
-virtualenv -p python3 venv
+virtualenv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install -e .
 
 # serve back-end at localhost:5000
-FLASK_APP=run.py flask run
+FLASK_APP=run.py 
+flask run
 ```# tokenauthentication
