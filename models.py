@@ -118,6 +118,9 @@ class PortfolioModel(Base):
 
     def add_user(self, user):
         self.owner.append(user)
+    
+    def find_porfolio(cls, name):
+        return cls.query.filter_by(name = name).first()
     @classmethod
     def return_all(cls):
         def to_json(x):
@@ -128,8 +131,8 @@ class PortfolioModel(Base):
             }
         return {'portfolios': list(map(lambda x: to_json(x), PortfolioModel.query.all()))}
     
-    def get_user(self, table, owner):
-        return db_session.query(self).filter(self.owner.any(table.name == owner)).all()[0].name
+    def get_user(self, owner):
+        return db_session.query(self).filter(self.owner.any(UserModel.name == owner)).all()[0].name
 
     def add_data(self):
         db_session.add(self) 
